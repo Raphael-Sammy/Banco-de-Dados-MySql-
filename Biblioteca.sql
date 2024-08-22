@@ -100,6 +100,9 @@ SELECT * FROM Livro;
 SELECT * FROM Cliente;
 SELECT * FROM Aluguel;
 
+DESCRIBE Pacientes;
+DESCRIBE Consultas;
+DESCRIBE Medicos;
 
 SELECT nome, sexo From Cliente;
 
