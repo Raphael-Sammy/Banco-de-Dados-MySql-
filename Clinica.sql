@@ -79,4 +79,18 @@ ALTER TABLE Consultas add preco float;
 
 update Consultas set preco = 120.45;
 
+DESCRIBE Pacientes;
 DESCRIBE Consultas;
+DESCRIBE Medicos;
+
+SELECT * FROM Pacientes WHERE nomePaciente = 'João Bosco';
+SELECT * FROM Consultas WHERE codPacientes = (SELECT codigoPacientes FROM Pacientes WHERE nomePaciente = 'João Bosco');
+
+
+SELECT COUNT(DISTINCT Medicos.codigoMedico) AS total_medicos, 
+       GROUP_CONCAT(DISTINCT Medicos.nome SEPARATOR ', ') AS medicos
+FROM Pacientes
+JOIN Consultas ON Pacientes.codigoPacientes = Consultas.codPacientes
+JOIN Medicos ON Consultas.codMedico = Medicos.codigoMedico
+WHERE Pacientes.nomePaciente = 'João Bosco';
+
